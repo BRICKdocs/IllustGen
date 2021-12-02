@@ -2,6 +2,7 @@
     Text-To-Image GAN model test file
     Junho Shin, Dec.2021
     source 1 : https://wikidocs.net/86083
+    source 2 : https://github.com/Dev93junho/Deep-Learning-Based-RobotArm-System
 
 '''
 
