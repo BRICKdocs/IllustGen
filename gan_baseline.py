@@ -24,7 +24,6 @@ import re
 import json
 
 # Preprocess Korean
-import nltk
 from konlpy.tag import Kkma
 kor_tagger = Kkma()
 
