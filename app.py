@@ -21,7 +21,7 @@ def post_hub():
 
 @app.route("/input")
 def input_data():
-    pass
+    return render_template('input.html')
 
 def minting():
     pass

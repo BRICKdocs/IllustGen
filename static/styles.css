@@ -47,3 +47,13 @@ section{
 #btn-start:hover{
     background-color: #682B2B;
 }
+
+label{
+    color: antiquewhite;
+}
+
+canvas{
+    background-color: #ffffff;
+    width: 1280px;
+    height: 720px;
+}
