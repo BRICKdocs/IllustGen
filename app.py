@@ -1,12 +1,12 @@
 from logging import debug
 from flask import Flask, render_template
-from werkzeug import redirect
+# from werkzeug import redirect
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    render_template("index.html")
+    return render_template('index.html')
 
 
 @app.route("/loading")
@@ -34,4 +34,4 @@ def generate_nft():
     pass
 
 if __name__ == '__main__':
-    app.run(port=5050, debug=True)
+    app.run(port=5000, debug=True)
