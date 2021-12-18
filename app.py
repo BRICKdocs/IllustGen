@@ -1,5 +1,7 @@
 from logging import debug
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask.wrappers import Request
+from werkzeug.utils import redirect
 # from werkzeug import redirect
 
 app = Flask(__name__)
@@ -13,10 +15,11 @@ def index():
 def generate_loading():
     pass
 
-@app.route("/post")
+@app.route("/post", methods=["POST"])
 def post_hub():
     # all page redirect works via this function
-    pass
+    if request.form.get('start-service'):
+        return redirect('/input')
 
 
 @app.route("/input")

@@ -4,36 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="sytlesheet" href="../static/base_style.css">
     <link rel="stylesheet" href="../static/styles.css">
     asdf
     <title>BrickIllust</title>
 </head>
 <body>
     <div>
-        <div>
+        <div class="nav">
             <!--to home button-->
-            <a href={{ url_for('index') }} >
-                <img class="logo" src={{ url_for('static',filename='img/Logo-wh.png') }} width="100" height="100">
-            </a>
+            <img class="logo" src={{ url_for('static',filename='img/Logo-wh.png') }} width="10%" height="10%">
         </div>
-        <div>
-            <!--canvas-->
-            <label for="sketch">Sketch for img</label>
-            <canvas id="sketch"></canvas>
-            <script src={{ url_for('static', filename='app.js') }}></script>
-        </div>
-        <div>
-            <!--text-->
-            <label for="summary">Summary for image</label>
-            <textarea id="summary" name="summary" rows="3"  cols="50">
+        <div class="inputBody">
+            <div>
+                <!--canvas-->
+                <label for="sketch">Sketch for img</label>
+                <canvas id="sketch"></canvas>
+                <script src={{ url_for('static', filename='app.js') }}></script>
+            </div>
+            <div>
+                <!--text-->
+                <label for="summary">Summary for image</label>
+                <textarea id="summary" name="summary" rows="3"  cols="50">
 
-            </textarea>
-        </div>
-        <div>
-            <!--submit button-->
-            <form class="generate">
-                <input type="submit" value="생 성 하 기" name="gen-pic" id="btn-gen">
-            </form>
+                </textarea>
+            </div>
+            <div>
+                <!--submit button-->
+                <form class="generate">
+                    <input type="submit" value="생 성 하 기" name="gen-pic" id="btn-gen">
+                </form>
+            </div>
         </div>
     </div>
 
