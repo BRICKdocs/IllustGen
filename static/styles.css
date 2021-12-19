@@ -5,13 +5,6 @@ body{
     background-color: #1a1a1a;
 }
 
-section{
-    display: flex;
-    flex-direction: column;
-    margin-top: 15em;
-
-}
-
 .logo{
     display: flex;
     justify-content: center;
@@ -43,10 +36,38 @@ section{
     background-color: #682B2B;
 }
 
-label{
-    color: antiquewhite;
+.input-wrapper{
+    padding: 2em;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
 }
+
+.input-wrapper>#write-wrapper{
+    height: 600px;
+}
+
 
 canvas{
     background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+
+.generate{
+    display: flex;
+    justify-content: center;
+}
+
+.generate>#btn-gen{
+    width: 200px;
+    height: 80px;
+    border-style: none;
+    border-radius: 3.5em;
+    font-size: 30px;
+    font-weight: bold;
+}
+
