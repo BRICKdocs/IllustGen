@@ -48,6 +48,51 @@ class TextEmbeddings(object):
                 word_vectors.append(vec)
             return cls(word_to_index, word_vectors)
 
+    def get_embedding(self, word):
+        """
+        Params:
+            word (str)
+        Return:
+            Embedding (numpy.array)
+        """
+        return self.word_vectors[self.word_to_index[word]]
+
+    def get_closet_to_vector(self, vector, n=1):
+        """
+        If you get 'vector', return the K-NN
+
+        Params:
+            vector (np.ndarray): SAME size with Annoy index
+            n (int): return neighbors number
+        Returns:
+            [str, str, ....] : Nearest word with given Vector
+            NOT Sorted word in order of distance
+        """
+        nn_indices = self.index.get_nns_by_vector(vector, n)
+        return [self.index_to_word[neighbor] for in nn_indices]
+
+    def compute_and_print_analogy(self, word1, word2, word3):
+        vec1=self.get_embedding(word1)
+        vec2=self.get_embedding(word2)
+        vec3=self.get_embedding(word3)
+
+        spatial_relationship = vec2 - vec1
+        vec4 = vec3 + spatial_relationship
+
+        closest_words=self.get_closest_to_vector(vec4, n=4)
+        existing_words=set([word1,word2,word3])
+        closest_words=[word for word in closest_words if word not in existing_words]
+
+        if len(closest_words) == 0:
+            print("Do not find Neareast neighbor")
+            return
+        for word4 in closest_words:
+            print("{}:{}::{}:{}".format(word1,word2,word3,word4))
+
+
+embeddings = \
+    TextEmbeddings.from_embeddings_file('need to import train file')
+
 class BrickGAN():
     def __init__(self):
         pass
