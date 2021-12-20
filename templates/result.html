@@ -12,20 +12,14 @@
         <div class="nav">
             <img class="logo" src={{ url_for('static',filename='img/illu-Logo-wh.png') }} width="150" height="50">
         </div>
-        <div class="input-wrapper">
-            <div id="canvas-wrapper">
-                <!--canvas-->
-                <canvas id="sketch"></canvas>
-                <script src={{ url_for('static', filename='app.js') }}></script>
+        <div class="result-wrapper">
+            <div id="image-wrapper">
+                <img src="../static/img/sample.png">
             </div>
             <div class="rightside">
-                <div id="write-wrapper">
-                    <!--text-->
-                    <textarea id="summary" name="summary" rows="10"  cols="50" placeholder="describe your idea using text"></textarea>
-                </div>
                 <!--submit button-->
                 <form class="generate">
-                    <input type="submit" value="생 성 하 기" name="gen-pic" id="btn-gen">
+                    <input type="submit" value="민 팅 하 기" name="gen-pic" id="btn-gen">
                 </form>
             </div>
         </div>

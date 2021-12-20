@@ -13,7 +13,11 @@ def index():
 
 @app.route("/loading")
 def generate_loading():
-    pass
+    return render_template('loading.html')
+
+@app.route("/minting")
+def minting():
+    return render_template('minting.html')
 
 @app.route("/post", methods=["POST"])
 def post_hub():
@@ -26,12 +30,12 @@ def post_hub():
 def input_data():
     return render_template('input.html')
 
-def minting():
-    pass
+#def minting():
+#    pass
 
 @app.route("/result")
 def generate_img():
-    pass
+    return render_template('result.html')
 
 def generate_nft():
     pass

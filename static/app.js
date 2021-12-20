@@ -1,8 +1,8 @@
 const canvas = document.getElementById("sketch");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 400;
-canvas.height = 600;
+canvas.width = 1080;
+canvas.height = 720;
 
 ctx.strokeStyle = "black";
 ctx.lineWidth = 1.5;

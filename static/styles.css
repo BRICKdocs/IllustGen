@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: #1a1a1a;
+    background-color: #dabdbd;
 }
 
 .logo{
@@ -15,7 +15,6 @@ body{
     content: url(./img/illu-Logo-wh.png);
     width: 40%;
 }
-
 
 .start{
     display: flex;
@@ -43,8 +42,19 @@ body{
     justify-content: center;
 }
 
-.input-wrapper>#write-wrapper{
-    height: 600px;
+.result-wrapper{
+    padding: 2em;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.result-wrapper>#image-wrapper>img{
+    width: 1080px;
+}
+
+.rightside{
+    width: 380px;
 }
 
 
@@ -56,6 +66,9 @@ canvas{
     margin-right: auto;
 }
 
+canvas:hover{
+    cursor: url(cursor.cur) 1 15, move;
+}
 
 .generate{
     display: flex;
@@ -71,3 +84,6 @@ canvas{
     font-weight: bold;
 }
 
+.generate>#btn-gen:hover{
+    background-color: #682B2B;
+}
