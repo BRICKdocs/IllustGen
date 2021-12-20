@@ -24,6 +24,8 @@ def post_hub():
     # all page redirect works via this function
     if request.form.get('start-service'):
         return redirect('/input')
+    if request.form.get('gen-pic'):
+        return redirect('/loading')
 
 
 @app.route("/input")
