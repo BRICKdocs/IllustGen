@@ -49,10 +49,6 @@ body{
     color: #303030;
 }
 
-.container {
-    display: none;
-}
-
 .logo{
     display: flex;
     justify-content: center;
