@@ -8,6 +8,9 @@
     <title>BrickIllust</title>
 </head>
 <body>
+    <div class="loading">
+    </div>
+
     <section class="container">
         <div class="nav">
             <img class="logo" src={{ url_for('static',filename='img/illu-Logo-wh.png') }} width="150" height="50">
@@ -16,7 +19,7 @@
             <div id="image-wrapper">
                 <img src="../static/img/sample.png">
             </div>
-            <div class="rightside">
+            <div class  ="rightside">
                 <!--submit button-->
                 <form class="generate">
                     <input type="submit" value="민 팅 하 기" name="gen-pic" id="btn-gen">
@@ -24,5 +27,7 @@
             </div>
         </div>
     </section>
+
+    <script src={{ url_for('static', filename='loading.js') }}></script>
 </body>
 </html>
