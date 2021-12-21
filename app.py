@@ -1,7 +1,8 @@
-from logging import debug
 from flask import Flask, render_template, request
-from flask.wrappers import Request
 from werkzeug.utils import redirect
+from keras.models import load_model
+from keras.preprocessing import image
+
 # from torch_utils import transform_image, get_prediction
 # from werkzeug import import_string, cached_property
 # from app import LazyView
@@ -9,18 +10,18 @@ from werkzeug.utils import redirect
 app = Flask(__name__)
 
 
-# class LazyView(object):
+dic = {0 : 'Cat', 1 : 'Dog'}
 
-#     def __init__(self, import_name):
-#         self.__module__, self.__name__ = import_name.rsplit('.', 1)
-#         self.import_name = import_name
+model = load_model('model.h5')
 
-#     @cached_property
-#     def view(self):
-#         return import_string(self.import_name)
+model.make_predict_function()
 
-#     def __call__(self, *args, **kwargs):
-#         return self.view(*args, **kwargs)
+def predict_label(img_path):
+	i = image.load_img(img_path, target_size=(100,100))
+	i = image.img_to_array(i)/255.0
+	i = i.reshape(1, 100,100,3)
+	p = model.predict_classes(i)
+	return dic[p[0]]
 
 
 # # initialize IMAGE DATA TYPE
@@ -55,27 +56,13 @@ def post_hub():
 def input_data():
     return render_template('input.html')
 
-# @app.route('/predict', methods=['POST'])
-#     #    1. Load image
-#     #    2. image -> tensor
-#     #    3. prediction
-#     #    4. return json    
-# def predict():
-#     if request.method == 'POST':
-#         file = request.files.get('file')
-#         if file is None or file.filename == "":
-#             return jsonify({'error': 'no file'})
-#         if not allowed_file(file.filename):
-#             return jsonify({'error': 'format not supported'})
-
-#         try:
-#             img_bytes = file.read()
-#             tensor = transform_image(img_bytes)
-#             prediction = get_prediction(tensor)
-#             data = {'prediction': prediction.item(), 'class_name': str(prediction.item())}
-#             return jsonify(data)
-#         except:
-#             return jsonify({'error': 'error during prediction'})
+@app.route('/predict', methods=['GET','POST'])
+def predict():
+    if request.method == 'POST':
+        img=request.files['my_image']
+        img_path='static/' + img.filename
+        p=predict_label
+        return render_template("index.html", prediction = p, img_path = img_path)
 
 
 @app.route("/result")
