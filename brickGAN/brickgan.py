@@ -1,104 +1,60 @@
 """
 BrickGAN init
 
-Author : Junho Shin
-Source: NLP with Pytorch
+import OpenAI DALL-E
 """
+import io
+import os, sys
+import requests
+import PIL
 
-import numpy as np
-from annoy import AnnoyIndex # import k-Neighborhood Nearest algorithm
+import torch
+import torchvision.transforms as T
+import torchvision.transforms.functional as TF
 
-#Embedding Text
-class TextEmbeddings(object):
-    def __init__(self, word_to_index, word_vectors):
-        """
-        Describe params
+from dall_e          import map_pixels, unmap_pixels, load_model
+from IPython.display import display, display_markdown
 
-        PARAMS:
-            word_to_index (dict): mapping word to int
-            word_vectors (numpy array)
-        """
-        self.word_to_index = word_to_index
-        self.word_vectors = word_vectors
-        self.index_to_word = \
-            {v: k for k, v in self.word_to_index()}
-        self.index = AnnoyIndex(len(word_vectors[0]),
-                                metric='euclidean')
-        for _, i in self.word_to_index.items():
-            self.index.add_item(i, self.word_vectors[i])
-        self.index.build(50)
-    @classmethod
-    def from_embeddings_file(cls, embedding_file):
-        """
-        create object from pretrained vector
+target_image_size = 256
 
-        Params:
-            embedding_file (str): file locale
-        Returns:
-            TextEmbedding's Instance
-        """
-        word_to_index ={}
-        word_vectors=[]
-        with open(embedding_file) as fp:
-            for line in fp.readlines():
-                line=line.split("")
-                word=line[0]
-                vec=np.array([float(x) for x in line[1:]])
-                word_to_index[word] = len(word_to_index)
-                word_vectors.append(vec)
-            return cls(word_to_index, word_vectors)
+def download_image(url):
+    resp = requests.get(url)
+    resp.raise_for_status()
+    return PIL.Image.open(io.BytesIO(resp.content))
 
-    def get_embedding(self, word):
-        """
-        Params:
-            word (str)
-        Return:
-            Embedding (numpy.array)
-        """
-        return self.word_vectors[self.word_to_index[word]]
+def preprocess(img):
+    s = min(img.size)
+    
+    if s < target_image_size:
+        raise ValueError(f'min dim for image {s} < {target_image_size}')
+        
+    r = target_image_size / s
+    s = (round(r * img.size[1]), round(r * img.size[0]))
+    img = TF.resize(img, s, interpolation=PIL.Image.LANCZOS)
+    img = TF.center_crop(img, output_size=2 * [target_image_size])
+    img = torch.unsqueeze(T.ToTensor()(img), 0)
+    return map_pixels(img)
 
-    def get_closet_to_vector(self, vector, n=1):
-        """
-        If you get 'vector', return the K-NN
+# This can be changed to a GPU, e.g. 'cuda:0'.
+dev = torch.device('cpu')
 
-        Params:
-            vector (np.ndarray): SAME size with Annoy index
-            n (int): return neighbors number
-        Returns:
-            [str, str, ....] : Nearest word with given Vector
-            NOT Sorted word in order of distance
-        """
-        nn_indices = self.index.get_nns_by_vector(vector, n)
-        return [self.index_to_word[neighbor] for in nn_indices]
+# For faster load times, download these files locally and use the local paths instead.
+enc = load_model("https://cdn.openai.com/dall-e/encoder.pkl", dev)
+dec = load_model("https://cdn.openai.com/dall-e/decoder.pkl", dev)
 
-    def compute_and_print_analogy(self, word1, word2, word3):
-        vec1=self.get_embedding(word1)
-        vec2=self.get_embedding(word2)
-        vec3=self.get_embedding(word3)
+x = preprocess(download_image('https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iKIWgaiJUtss/v2/1000x-1.jpg'))
+display_markdown('Original image:')
+display(T.ToPILImage(mode='RGB')(x[0]))
 
-        spatial_relationship = vec2 - vec1
-        vec4 = vec3 + spatial_relationship
+import torch.nn.functional as F
 
-        closest_words=self.get_closest_to_vector(vec4, n=4)
-        existing_words=set([word1,word2,word3])
-        closest_words=[word for word in closest_words if word not in existing_words]
+z_logits = enc(x)
+z = torch.argmax(z_logits, axis=1)
+z = F.one_hot(z, num_classes=enc.vocab_size).permute(0, 3, 1, 2).float()
 
-        if len(closest_words) == 0:
-            print("Do not find Neareast neighbor")
-            return
-        for word4 in closest_words:
-            print("{}:{}::{}:{}".format(word1,word2,word3,word4))
+x_stats = dec(z).float()
+x_rec = unmap_pixels(torch.sigmoid(x_stats[:, :3]))
+x_rec = T.ToPILImage(mode='RGB')(x_rec[0])
 
-
-embeddings = \
-    TextEmbeddings.from_embeddings_file('need to import train file')
-
-class BrickGAN():
-    def __init__(self):
-        pass
-    def WordEmbedding():
-        pass
-    def Discriminator():
-        pass
-    def Generator():
-        pass
+display_markdown('Reconstructed image:')
+display(x_rec)
