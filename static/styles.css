@@ -87,3 +87,21 @@ canvas:hover{
 .generate>#btn-gen:hover{
     background-color: #682B2B;
 }
+
+.download{
+    display: flex;
+    justify-content: center;
+}
+
+.download>#btn-down{
+    width: 200px;
+    height: 80px;
+    border-style: none;
+    border-radius: 3.5em;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.download>#btn-down:hover{
+    background-color: #682B2B;
+}
