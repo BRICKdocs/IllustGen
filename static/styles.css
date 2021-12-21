@@ -1,8 +1,56 @@
+*{
+    box-sizing: border-box;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 body{
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #dabdbd;
+}
+
+.loading>h2 {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    background-color: #dabdbd;
+    position: relative;
+    font-size: 10vw;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.loading>h2::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #51FFCB;
+    overflow: hidden;
+    animation: load 6s linear infinite;
+}
+
+@keyframes load {
+    0%, 10%, 100% {
+        width: 0;
+    }
+    70%, 90%{
+        width: 100%;
+    }
+}
+
+.loading>p {
+    position: relative;
+    font-size: 1vw;
+    font-weight: 700;
+    color: #303030;
+}
+
+.container {
+    display: none;
 }
 
 .logo{
@@ -85,5 +133,23 @@ canvas:hover{
 }
 
 .generate>#btn-gen:hover{
+    background-color: #682B2B;
+}
+
+.download{
+    display: flex;
+    justify-content: center;
+}
+
+.download>#btn-down{
+    width: 200px;
+    height: 80px;
+    border-style: none;
+    border-radius: 3.5em;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.download>#btn-down:hover{
     background-color: #682B2B;
 }
