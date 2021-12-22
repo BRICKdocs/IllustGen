@@ -60,7 +60,7 @@ body{
 }
 
 .logo>img{
-    content: url(./img/illu-Logo-wh.png);
+    content: url(./img/illustgen-logo.png);
     width: 40%;
 }
 
@@ -102,9 +102,21 @@ body{
 }
 
 .rightside{
-    width: 380px;
+    justify-content: center;
 }
 
+#write-wrapper>#summary{
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+textarea{
+    height:10em;
+    width:50em;
+    font-size: 2vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 canvas{
     background-color: #ffffff;
