@@ -8,6 +8,8 @@ Service Designed by Team devBricks since Dec. 2021
 
 ## Flask Application
 예시 화면
+![image](https://user-images.githubusercontent.com/40736396/147096513-2d63a72d-f507-4122-9b33-18ca5b2fdbac.png)
+
 
 ## DALL-e Usage
 예시 화면
