@@ -137,8 +137,8 @@ vae = DiscreteVAE(
     smooth_l1_loss = SMOOTH_L1_LOSS,
     kl_div_loss_weight = KL_LOSS_WEIGHT
 )
-if not using_deepspeed:
-    vae = vae.cuda()
+# if not using_deepspeed:
+#     vae = vae.cuda()
 
 
 assert len(ds) > 0, 'folder does not contain any images'
@@ -222,7 +222,7 @@ temp = STARTING_TEMP
 
 for epoch in range(EPOCHS):
     for i, (images, _) in enumerate(distr_dl):
-        images = images.cuda()
+        # images = images.cuda()
 
         loss, recons = distr_vae(
             images,
