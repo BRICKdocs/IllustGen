@@ -15,7 +15,9 @@ Service Designed by Team devBricks since Dec. 2021
 ![image](https://user-images.githubusercontent.com/40736396/147096643-47e0cbd6-7431-4f25-8e44-ee46daaadbb8.png)
 
 ## DALL-e Usage
+
 예시 화면
+
 [1] Train VAE
 `
 $ python train_vae.py --image_folder /path/to/your/images
