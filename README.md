@@ -21,20 +21,24 @@ Service Designed by Team devBricks since Dec. 2021
 예시 화면
 
 [1] Train VAE
+
 `
 $ python train_vae.py --image_folder /path/to/your/images
 `
 
 [2] Train DALL-e
+
 `
 $ python train_dalle.py --vae_path ./vae.pt --image_text_folder /path/to/data
 `
+
 
 `
 $ python train_dalle.py --dalle_path ./dalle.pt --image_text_folder /path/to/data
 `
 
 [3] you can then used the saved model for generation!
+
 `
 $ python generate.py --dalle_path ./dalle.pt --text '<내용입력>'
 `
