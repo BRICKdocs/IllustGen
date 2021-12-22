@@ -414,7 +414,7 @@ dalle = DALLE(vae=vae, **dalle_params)
 if not using_deepspeed:
     if args.fp16:
         dalle = dalle.half()
-    dalle = dalle.cuda()
+    # dalle = dalle.cuda()
 
 if RESUME and not using_deepspeed:
     dalle.load_state_dict(weights)
@@ -569,7 +569,8 @@ for epoch in range(resume_epoch, EPOCHS):
             t = time.time()
         if args.fp16:
             images = images.half()
-        text, images = map(lambda t: t.cuda(), (text, images))
+        # text, images = map(lambda t: t.cuda(), (text, images))
+        text, images = map(lambda t: (text, images))
 
         loss = distr_dalle(text, images, return_loss=True)
 
