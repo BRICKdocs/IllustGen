@@ -24,11 +24,11 @@ def predict_label(img_path):
 	return dic[p[0]]
 
 
-# # initialize IMAGE DATA TYPE
-# ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-# def allowed_file(filename):
-#     # xxx.png
-#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+# initialize IMAGE DATA TYPE
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+def allowed_file(filename):
+    # xxx.png
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Start the index
 @app.route("/")
