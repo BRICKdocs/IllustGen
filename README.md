@@ -26,8 +26,8 @@ pip install -r requirements.txt
 python main.py
 
 flask run
-</pre>
 </code>
+</pre>
 
 ## Dependency
 [1] [DALL-e](https://openai.com/blog/dall-e/) & DALL-E in pytorch 
