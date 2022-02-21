@@ -124,6 +124,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+ilgen/
 
 # Spyder project settings
 .spyderproject
@@ -183,3 +184,5 @@ test.*/
 
 # MacOSX
 **/*.DS_Store
+assets/
+minDALLE/assets/
