@@ -11,7 +11,7 @@ cachetools==5.0.0
 certifi==2021.10.8
 charset-normalizer==2.0.10
 click==8.0.3
-clip==1.0
+clip==1.0.0
 colorama==0.4.4
 cycler==0.11.0
 Cython==0.29.26
