@@ -1,0 +1,14 @@
+<nav class="navbar navbar-grape navbar-expand-lg">
+        {% if g.user %}
+        <ul class="nav navbar-nav navbar-rignt">
+            <button type="button" class="btn btn-outline-light" onclick="location.href='{{url_for('auth.logout') }}'">sign out</button>
+        </ul>
+        {% else %}
+        <ul class="nav navbar-nav navbar-rignt">
+            <div class="btn-toolbar">
+                <button type="button" class="btn btn-outline-light m-2" onclick="location.href='{{url_for('auth.signup')}}'">sign up</button>
+                <button type="button" class="btn btn-light m-2" onclick="location.href='{{url_for('auth.login') }}'">sign in</button>
+            </div>
+        </ul>
+        {% endif %}
+</nav>

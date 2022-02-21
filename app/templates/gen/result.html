@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block content %}
+<section class="container result-wrapper">
+    <div class="leftside mr-3">
+    </div>
+    <div class="centerside">
+        <div class="image-title">
+            <h2>{{title}}</h2>
+        </div>
+        <div class="image-wrapper">
+            <img src={{data}}>
+            <!--웹페이지 테스트 시 윗줄 코멘트 아랫줄 언코멘트, gen_views에서 result 코멘트-->
+            <!--<img src="{{ url_for('static', filename='img/temp_img.png') }}">-->
+        </div>
+    </div>
+    <div class="rightside ml-3">
+        <!--edit button-->
+        <form class="btn-wrapper my-3" action=" " method="POST">
+            <button class="btn" id="btn-edit" name="edit-pic" type="edit", value="Button"> 수정하기 </button>
+        </form>
+        <!--submit button-->
+        <form class="btn-wrapper my-3" action=" " method="POST">
+            <button class="btn" id="btn-gen" name="mint-pic" type="submit", value="Button"> 민팅하기 </button>
+        </form>
+    </div>
+</section>
+{% endblock %}

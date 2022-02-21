@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="loading">
+    <h2 data-text="IllustGen">IllustGen</h2>
+    <p align="center"> 인공지능짜응이 그림실력을 뽐내는 중 </p>
+</div>
+<section class="container">
+    <div class="logo">
+        <img>
+    </div>
+    <form method="post" class="post-form" onsubmit="loading()">
+        <div class="input-group mb-4 my-4">
+            <input type="text" class="form-control mr-4" name="description" id="description" placeholder="Typing your IDEA!" aria-describedby="btn-gen">
+            <button type="submit" class="btn btn-outline-warning" id="btn-gen" name="gen-pic"> GEN! </button>
+        </div>
+    </form>
+    <!-- 아래 스크립트 주석 혹은 페이지 로딩 지연 시 loading div 노출 -->
+    <script src={{ url_for('static', filename='loading.js') }}></script>
+</section>
+{% endblock %}

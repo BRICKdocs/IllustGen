@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block content %}
+<body>
+    <div class="loading">
+        <h2 data-text="IllustGen">IllustGen</h2>
+        <p align="center"> 인공지능짜응이 그림실력을 뽐내는 중 </p>
+    </div>
+
+    <section class="container">
+        <div class="result-wrapper">
+            <div id="image-wrapper">
+                <img src="../static/img/sample.png">
+            </div>
+            <div class="rightside">
+                <!--submit button-->
+                <form class="generate my-3" action=" " method="POST">
+                    <button id="btn-gen" name="down-pic" type="submit", value="Button"> 다운로드 </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- 아래 스크립트 주석 혹은 페이지 로딩 지연 시 loading div 노출 -->
+    <script src={{ url_for('static', filename='loading.js') }}></script>
+</body>
+{% endblock %}

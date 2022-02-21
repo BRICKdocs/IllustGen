@@ -1,46 +1,33 @@
-# IllustGen
-Service Designed by Team devBricks since Dec. 2021
+# BrickIllust
+Service Designed by Team Bricks since Dec. 2021
 
 ## overview
-[1] 웅진북센 주최 2021 한국어 말뭉치를 이용한 인공지능 서비스 공모전 출품작
+[1] 저작권 걱정없는 스톡포토 이미지 생성 서비스 "브릭일러스트"
 
-[2] Flask & DALL-e VAE를 사용한 이미지 생성 구현 서비스 기획, 개발
+[2] 사용자 입력 데이터 기반의 나만을 위한 일러스트 생성 서비스 제공
+
+[3] NFT를 활용한 자신만의 이미지로 저작권 보장
 
 ## Flask Application
+![Desktop Frame - LogIn](https://user-images.githubusercontent.com/40736396/152788024-f3a9c038-5c22-430c-ae0b-9e3a3bfd3af0.png)
 
-예시 화면
+## Image Generation
 
-![image](https://user-images.githubusercontent.com/40736396/147096513-2d63a72d-f507-4122-9b33-18ca5b2fdbac.png)
+### 01. translator API
 
-![image](https://user-images.githubusercontent.com/40736396/147096602-f1835c12-05c2-4097-aaa9-a564ec1f3197.png)
+### 02. minDALL-E
 
-![image](https://user-images.githubusercontent.com/40736396/147096643-47e0cbd6-7431-4f25-8e44-ee46daaadbb8.png)
+## Non-Fungible Token
+## Usage
+<pre>
+<code>
+pip install -r requirements.txt
 
-## DALL-e Usage
+python main.py
 
-예시 화면
+flask run
+</pre>
+</code>
 
-[1] Train VAE
-
-`
-$ python train_vae.py --image_folder /path/to/your/images
-`
-
-[2] Train DALL-e
-
-`
-$ python train_dalle.py --vae_path ./vae.pt --image_text_folder /path/to/data
-`
-
-
-`
-$ python train_dalle.py --dalle_path ./dalle.pt --image_text_folder /path/to/data
-`
-
-[3] you can then used the saved model for generation!
-
-`
-$ python generate.py --dalle_path ./dalle.pt --text '<내용입력>'
-`
 ## Dependency
 [1] [DALL-e](https://openai.com/blog/dall-e/) & DALL-E in pytorch 

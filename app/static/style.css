@@ -1,0 +1,157 @@
+body {
+    background: linear-gradient(180deg, #5E58AA 61.98%, rgba(94, 88, 170, 0.699917) 80.2%, rgba(94, 88, 170, 0.697917) 80.21%, rgba(94, 88, 170, 0) 87.5%);
+}
+
+.loading {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+
+}
+
+.loading>h2 {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 10vw;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.loading>h2::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #51FFCB;
+    overflow: hidden;
+    animation: load 6s linear infinite;
+}
+
+@keyframes load {
+    0%, 10%, 100% {
+        width: 0;
+    }
+    70%, 90%{
+        width: 100%;
+    }
+}
+
+.loading>p {
+    position: relative;
+    font-size: 1vw;
+    font-weight: 700;
+    color: #303030;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-top: 10vh;
+}
+
+.logo>img{
+    content: url(./img/illu-Logo-wh.png);
+    width: 40%;
+}
+
+.start{
+    display: flex;
+    justify-content: center;
+}
+
+#btn-start{
+    width: 200px;
+    height: 80px;
+    border-style: none;
+    border-radius: 3.5em;
+    margin-top: 3em;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#btn-start:hover{
+    background-color: #682B2B;
+}
+
+.input-wrapper{
+    padding: 2em;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.result-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.centerside{
+    justify-content: center;
+}
+
+.image-title{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.image-title>h2{
+    text-align: center;
+    color: antiquewhite;
+}
+
+.image-wrapper{
+    align-items: center;
+}
+
+.leftside{
+    display: flex;
+    float: left;
+    width: 200px;
+}
+
+.rightside{
+    float: right;
+    width: 200px;
+}
+
+.rightside>#write-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+canvas{
+    background-color: #ffffff;
+    width: 600;
+    height: 800;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+canvas:hover{
+    cursor: url(cursor.cur) 1 15, move;
+}
+
+.btn-wrapper>.btn{
+    width: 200px;
+    height: 40px;
+    border-style: none;
+    border-radius: 3.5em;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-wrapper>.btn:hover{
+    background-color: #682B2B;
+}
+
+/* auth templates */
+.form-group>label{
+    font-weight: bold;
+    color: #ffffff;
+}

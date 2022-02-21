@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block content %}
+<section class="container">
+    <div class="input-wrapper">
+        <!--<div id="canvas-wrapper">
+
+            <canvas id="sketch"></canvas>
+            <script src={{ url_for('static', filename='app.js') }}></script>
+        </div>-->
+        <div class="rightside">
+            <!--<div id="write-wrapper">
+                <textarea id="summary" name="summary" rows="10"  cols="45" placeholder="describe your idea using text"></textarea>
+            </div>
+            <form class="generate my-3" action=" " method="POST">
+                <button id="btn-gen" name="gen-pic" type="submit", value="Button"> 생성하기 </button>
+            </form>
+            -->
+            <form method="post" class="post-form">
+                <div class="form-group">
+                    <label for="description">설명</label>
+                    <textarea id="description" name="description" rows="10"  cols="45" placeholder="Typing your IDEA!"
+                        ></textarea>
+                </div>
+                <button type="submit" id="btn-gen" name="gen-pic"> 생성하기 </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

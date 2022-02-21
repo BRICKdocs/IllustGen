@@ -1,3 +1,8 @@
+#### working repo ###
+gene_api/
+nft_api/
+dalle_pytorch/
+
 # dall-e generation outputs
 outputs/
 *.pt
@@ -140,3 +145,41 @@ dmypy.json
 
 image-and-text-data/
 images/
+
+# db
+*.db
+migrations/
+
+#result
+imagegen/
+
+
+scripts/
+notebooks/
+figures/
+experiments/
+configs/dev/
+assets/
+
+*.ckpt
+core.*
+
+__pycache__/
+**/__pycache__/
+*.py[cod]
+**/*.py[cod]
+**/*.pyc
+result*/
+results*/
+results
+results.*
+backup*/
+test.*/
+.nfs*
+
+.idea/
+.ipynb_*/
+.ipynb_checkpoints/
+
+# MacOSX
+**/*.DS_Store
