@@ -1,4 +1,4 @@
-# BrickIllust
+# IllustGen
 Service Designed by Team Bricks since Dec. 2021
 
 ## overview
