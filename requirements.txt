@@ -11,7 +11,7 @@ cachetools==5.0.0
 certifi==2021.10.8
 charset-normalizer==2.0.10
 click==8.0.3
-clip==1.0.0
+git+https://github.com/openai/CLIP.git
 colorama==0.4.4
 cycler==0.11.0
 Cython==0.29.26
@@ -77,7 +77,6 @@ pyparsing==3.0.7
 pyrsistent==0.18.1
 python-dateutil==2.8.2
 pytorch-lightning==1.5.9
-pywin32==303
 PyYAML==6.0
 q==2.6
 regex==2022.1.18
