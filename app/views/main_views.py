@@ -12,13 +12,7 @@ def index():
 def go_draw():
     if request.method =='POST' and request.form['description']:
         description = request.form['description']
+        #return redirect(url_for('gen.loading', description=description))
         return redirect(url_for('gen.result', description = description))
     else:
         return redirect(url_for('main.index'))
-
-@bp.route('/input', methods=('GET', 'POST'))
-def input():
-    if request.method =='POST' and request.form['description']:
-        description = request.form['description']
-        return redirect(url_for('gen.result', description = description))
-    return render_template('input.html')

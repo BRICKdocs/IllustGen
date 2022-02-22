@@ -29,10 +29,13 @@ def minting():
 
 @bp.route('/nft_done')
 def done():
-    return render_template('gen/nft_done.html')
-
-@bp.route('/result/<description>')
+    return render_template('gen/nft_done.html', data=request.args.get('data'), title=request.args.get('description'))
+    
+@bp.route('/result/<description>', methods=('GET', 'POST'))
 def result(description):
+    
+    if request.form.get('mint-pic'):
+        return redirect(url_for('gen.done', description=description))
 
     device = 'cpu' # gpu 달려있으면  cuda 셋팅 후 전환
     set_seed(0)
@@ -79,9 +82,9 @@ def result(description):
     
     #웹페이지 테스트시 위까지 코멘트 아래줄 언코멘트
     #return render_template('gen/result.html', title=description)
-
+'''
 @bp.route('/result', methods=['POST'])
 def go_mint():
     if request.form.get('mint-pic'):
         return redirect(url_for('gen.done'))
-
+'''
