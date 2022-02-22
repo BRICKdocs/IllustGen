@@ -16,5 +16,24 @@
         {% endblock %}
         <script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
         <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyDhwd3OQe6axoFnXHERogT3939eitrmn8Y",
+              authDomain: "illustgen-13095.firebaseapp.com",
+              projectId: "illustgen-13095",
+              storageBucket: "illustgen-13095.appspot.com",
+              messagingSenderId: "214164793606",
+              appId: "1:214164793606:web:f99e197ebb51edba265687"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+          </script>
     </body>
 </html>
