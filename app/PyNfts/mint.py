@@ -1,33 +1,26 @@
-"""
-Mint with Python
-@author: https://github.com/realjohnward/python-nfts-tutorial
-Revision date: 2022-02-22
-"""
-
 from web3 import Web3, middleware
 from web3.exceptions import ContractLogicError
 from web3.gas_strategies.time_based import *
-from web3.middleware import geth_poa
+from web3.middleware import geth_poa_middleware
 import json
-import sys
+import sys 
 
-infura_url = "https://palm-testnet.infura.io/v3/2bd1199ab4664e95affacc45827de31f"
 link_to_img = sys.argv[1]
 if not link_to_img.startswith("./"):
     link_to_img = "./" + link_to_img
 
 metadata_hashes = json.load(open('metadata_hashes.json'))[link_to_img]
 
-w3 = Web3(provider=Web3.HTTPProvider(infura_url))
+w3 = Web3(provider=Web3.HTTPProvider("https://palm-testnet.infura.io/v3/2bd1199ab4664e95affacc45827de31f"))
 
 from_addr = '0x87aC8fB7F9847A6D76Eb217B40A2A91bADd3bbD6'
-contract_addr = '0x9838577D378D0f6aA068b24BbF8AD25f96A404C0'
+contract_addr = '0x7651487ca5dE4685C91973533099C043191D993A'
 ABI = json.load(open('abi.json'))
 PRIVATE_KEY = 'e052b603f3795407be51f1e6c50dae0c826100b4a80f7de9ea62dc26105cba86'
 
 contract = w3.eth.contract(contract_addr, abi=ABI)
 
-w3.middleware_onion.inject(geth_poa, layer=0)
+w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 w3.middleware_onion.add(middleware.latest_block_based_cache_middleware)
 w3.middleware_onion.add(middleware.simple_cache_middleware)
 
@@ -101,8 +94,3 @@ checksum_from_addr = Web3.toChecksumAddress(from_addr)
 for i, metadata_hash in enumerate(metadata_hashes):
     token_uri = f'ipfs://{metadata_hash}'
     handle_transaction("createNFT", [token_uri])
-
-
-
-
-
