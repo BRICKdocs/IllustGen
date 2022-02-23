@@ -2,6 +2,18 @@ body {
     background: linear-gradient(180deg, #5E58AA 61.98%, rgba(94, 88, 170, 0.699917) 80.2%, rgba(94, 88, 170, 0.697917) 80.21%, rgba(94, 88, 170, 0) 87.5%);
 }
 
+a{
+    color: ffffff;
+}
+
+a:hover{
+    color: bbbbbb;
+}
+
+li {
+    list-style-type: none;
+}
+
 .loading {
     display: none;
     flex-direction: column;

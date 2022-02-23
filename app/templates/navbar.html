@@ -1,16 +1,22 @@
-<nav class="navbar navbar-grape navbar-expand-lg">
-        {% if g.user %}
-        <ul class="nav navbar-nav navbar-rignt">
-            <button type="button" class="btn btn-outline-light" onclick="location.href='{{url_for('auth.logout') }}'">sign out</button>
-            <p>{{g.user.username}}</p>
-            <p>{{g.user.etherwallet}}</p>
-        </ul>
-        {% else %}
-        <ul class="nav navbar-nav navbar-rignt">
-            <div class="btn-toolbar">
-                <button type="button" class="btn btn-outline-light m-2" onclick="location.href='{{url_for('auth.signup')}}'">sign up</button>
-                <button type="button" class="btn btn-light m-2" onclick="location.href='{{url_for('auth.login') }}'">sign in</button>
+<nav class="navbar navbar-grape navbar-expand-xl">
+    {% if g.user %}
+    <ul class="nav navbar-nav navbar-rignt">
+        <button type="button" class="btn btn-outline-light" onclick="location.href='{{url_for('auth.logout') }}'">sign out</button>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{g.user.username}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">{{g.user.etherwallet}}</a>
             </div>
-        </ul>
-        {% endif %}
+        </li>
+    </ul>
+    {% else %}
+    <ul class="nav navbar-nav navbar-rignt">
+        <div class="btn-toolbar">
+            <button type="button" class="btn btn-outline-light m-2" onclick="location.href='{{url_for('auth.signup')}}'">sign up</button>
+            <button type="button" class="btn btn-light m-2" onclick="location.href='{{url_for('auth.login') }}'">sign in</button>
+        </div>
+    </ul>
+    {% endif %}
 </nav>
