@@ -2,6 +2,8 @@
         {% if g.user %}
         <ul class="nav navbar-nav navbar-rignt">
             <button type="button" class="btn btn-outline-light" onclick="location.href='{{url_for('auth.logout') }}'">sign out</button>
+            <p>{{g.user.username}}</p>
+            <p>{{g.user.etherwallet}}</p>
         </ul>
         {% else %}
         <ul class="nav navbar-nav navbar-rignt">
