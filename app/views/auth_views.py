@@ -17,7 +17,8 @@ def signup():
         if not user:
             user = User(username=form.username.data,
                         password=generate_password_hash(form.password1.data),
-                        email=form.email.data)
+                        email=form.email.data,
+                        etherwallet=form.etherwallet.data)
             db.session.add(user)
             db.session.commit()
             return redirect(url_for('main.index'))
@@ -47,6 +48,7 @@ def load_logged_in_user():
     user_id = session.get('user_id')
     if user_id is None:
         g.user = None
+        g.etherwallet = None
     else:
         g.user = User.query.get(user_id)
 
