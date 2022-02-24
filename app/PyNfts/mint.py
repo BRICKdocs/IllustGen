@@ -16,7 +16,7 @@ w3 = Web3(provider=Web3.HTTPProvider("https://palm-testnet.infura.io/v3/2bd1199a
 from_addr = '0x87aC8fB7F9847A6D76Eb217B40A2A91bADd3bbD6'
 contract_addr = '0x7651487ca5dE4685C91973533099C043191D993A'
 ABI = json.load(open('abi.json'))
-PRIVATE_KEY = 'e052b603f3795407be51f1e6c50dae0c826100b4a80f7de9ea62dc26105cba86'
+PRIVATE_KEY = 'e052b603f3795407be51f1e6c50dae0c826100b4a80f7de9ea62dc26105cba86' # Need to input private Key 
 
 contract = w3.eth.contract(contract_addr, abi=ABI)
 
