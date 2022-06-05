@@ -79,7 +79,7 @@ def result(description):
         # "./static/imagegen/"+fname+".png"
     # plt.imshow(images[0]) # imgTx
     # Image.fromarray((images[i]*255).astype(np.uint8))
-    return render_template('gen/result.html', fname=imgname, title=description)
+    return render_template('gen/result.html', fname=imgname, title=description) # --> api call --> react receive 
     
     #웹페이지 테스트시 위까지 코멘트 아래줄 언코멘트
     #return render_template('gen/result.html', title=description)
