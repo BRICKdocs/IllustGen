@@ -27,9 +27,9 @@ def loading():
 def minting():
     return render_template('gen/minting.html')
 
-@bp.route('/nft_done')
-def done():
-    return render_template('gen/nft_done.html', data=request.args.get('data'), title=request.args.get('description'))
+@bp.route('/nft_done/<description>')
+def done(description):        
+    return render_template('gen/nft_done.html', fname=description.replace(' ','_')+'.png')
     
 @bp.route('/result/<description>', methods=('GET', 'POST'))
 def result(description):
@@ -71,14 +71,15 @@ def result(description):
     buf = BytesIO()
     # fname = str(hash(id(Figure[0])))
     plt.savefig(buf, format="png")
+    imgname = description.replace(' ','_')+'.png'
+    plt.savefig('app/static/gen_result/'+imgname)
     #Embed the result in the html output
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     data = f'data:imagegen/png;base64,{data}'
         # "./static/imagegen/"+fname+".png"
     # plt.imshow(images[0]) # imgTx
     # Image.fromarray((images[i]*255).astype(np.uint8))
-    
-    return render_template('gen/result.html', data=data, title=description)
+    return render_template('gen/result.html', fname=imgname, title=description) # --> api call --> react receive 
     
     #웹페이지 테스트시 위까지 코멘트 아래줄 언코멘트
     #return render_template('gen/result.html', title=description)

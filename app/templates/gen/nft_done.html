@@ -8,9 +8,11 @@
             <h2>{{title}}</h2>
         </div>
         <div class="image-wrapper">
-            <img src={{data}}>
+            {% if True %}
+            <img src="{{ url_for('static', filename='gen_result/'+fname) }}">
             <!--웹페이지 테스트 시 윗줄 코멘트 아랫줄 언코멘트, gen_views에서 result 코멘트-->
             <!--<img src="{{ url_for('static', filename='img/temp_img.png') }}">-->
+            {% endif %}
         </div>
     </div>
     <div class="rightside ml-3">
